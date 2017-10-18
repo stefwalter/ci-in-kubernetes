@@ -5,39 +5,59 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="pikestreet.css">
-<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+<link rel="stylesheet" href="graphs.css">
 <title>Continuous Integration of an Operating System in Kubernetes</title>
+<script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild( link );
+</script>
 </head>
 <body>
 
 <div class="reveal">
+
+<div class="redhat-logo"></div>
+
 <div class="slides">
 
-    <section data-state="divider">
-        <h3>Continuous Integration of an Operating System in Kubernetes</h3>
+    <section data-state="title">
+        <h2>Continuous Integration</h2>
+        <h2>of an Operating System</h2>
+        <h1 class="comment" style="font-size: 2.2em">in Kubernetes</h1>
         <br>
         <p><strong>Stef Walter</strong><br>
         Red Hat</p>
     </section>
 
     <section data-transition="slide-in fade-out">
-        <h2 style="font-weight: 700"><strong>Continuous Integration</strong></h2>
-        &nbsp;<br>
-        &nbsp;
+        <h1 class="alt" style="padding-bottom: 0.5em; color: white;">Continuous
+            Integration</h1>
+        <p class="comment">&nbsp;<br>
+        &nbsp;</p>
     </section>
 
     <section data-transition="fade-in fade-out">
-        <h2 style="font-weight: 700; color: #999;">Continuous <strong>Integration</strong></h2>
-        Assemble everything together like in production,<br>and then drive it like a user.
+        <h1 class="alt" style="padding-bottom: 0.5em; color: #999;">Continuous
+            <span style="color: white">Integration</span></h1>
+        <p class="comment">Assemble everything together like in production,
+        <br>and then drive it like a user.</p>
     </section>
 
     <section data-transition="fade-in fade-out">
-        <img src="images/2735596261_e78f1bf26e_b-flickr-stichlily.jpg">
+        <img src="images/2735596261_e78f1bf26e_b-flickr-stichlily.png">
     </section>
 
     <section data-transition="fade-in fade-out">
-        <h2 style="font-weight: 700; color: #999;"><strong>Continuous</strong> Integration</h2>
+        <h1 class="alt" style="padding-bottom: 0.5em; color: #999;">
+            <span style="color: white">Continuous</span> Integration</h1>
         Do that integration for every single "change".<br>&nbsp;
+    </section>
+
+    <section>
+        <div class="graph" id="september-tests-and-vms"></div>
     </section>
 
     <section data-state="clear" data-transition="fade-in fade-out">
@@ -48,217 +68,220 @@
         </aside>
     </section>
 
-    <section data-state="clear" data-transition="fade-in fade-out">
-        TODO: Screenshot
+    <section data-state="clear" data-transition="fade-in fade-out"
+        data-background-repeat="no-repeat" data-background-position="center"
+        data-background="#fff" data-background-image="images/cockpit-system.png">
     </section>
 
-    <section data-state="clear" data-transition="fade-in fade-out">
-        TODO: Screenshot
+    <section data-state="clear" data-transition="fade-in fade-out"
+        data-background-repeat="no-repeat" data-background-position="center"
+        data-background="#fff" data-background-image="images/cockpit-topology.png">
     </section>
 
-    <section data-background-video="spawn-process.webm">
+    <section>
+        <section data-state="clear" data-background-video="video/spawn-process.webm">
+        </section>
+
+        <section data-state="clear" data-background-video="video/dbus-proxy.webm">
+        </section>
     </section>
 
-    <section data-background-video="dbus-proxy.webm">
+    <section>
+        <section data-state="complex">
+            <table class="reasons">
+                <thead>
+                    <th colspan="5" class="comment">
+                        90+ APIs: File, Command, REST, DBus, Socket
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>abrt</td>
+                        <td>AppStream</td>
+                        <td>apt-get</td>
+                        <td>atomic</td>
+                        <td>Candlepin /candlepin/</td>
+                    </tr><tr>
+                        <td>chpasswd</td>
+                        <td>CloudForms</td>
+                        <td>cryptsetup</td>
+                        <td>curl</td>
+                        <td>dbus-daemon</td>
+                    </tr><tr>
+                        <td>device-mapper</td>
+                        <td>docker-storage-setup</td>
+                        <td>docker</td>
+                        <td>e2fsprogs</td>
+                        <td>etcd</td>
+                    </tr><tr>
+                        <td>/etc/kdump.conf</td>
+                        <td>/etc/passwd</td>
+                        <td>firewalld</td>
+                        <td>FreeIPA</td>
+                        <td>GnuTLS</td>
+                    </tr><tr>
+                        <td>GSSAPI</td>
+                        <td>hostnamed</td>
+                        <td>ipa-client</td>
+                        <td>ipa-client</td>
+                        <td>iproute</td>
+                    </tr><tr>
+                        <td>iptables</td>
+                        <td>iscsi-tools</td>
+                        <td>journalctl</td>
+                        <td>kdump</td>
+                        <td>klist</td>
+                    </tr><tr>
+                        <td>krb5</td>
+                        <td>Kubernetes /api/</td>
+                        <td>lastlog</td>
+                        <td>libvirt</td>
+                        <td>loginctl</td>
+                    </tr><tr>
+                        <td>lvm</td>
+                        <td>mdadm</td>
+                        <td>NetworkManager</td>
+                        <td>NetworkManager-team</td>
+                        <td>oddjob</td>
+                    </tr><tr>
+                        <td>Openshift /oapi/</td>
+                        <td>Openshift OAuth2</td>
+                        <td>openssl</td>
+                        <td>ostree</td>
+                        <td>oVirt /api/</td>
+                    </tr><tr>
+                        <td>PackageKit</td>
+                        <td>passwd</td>
+                        <td>PCP</td>
+                        <td>PolicyKit</td>
+                        <td>/proc/meminfo... <!-- cpuinfo, diskstats --></td>
+                    </tr><tr>
+                        <td>/proc/mounts</td>
+                        <td>/proc/net/dev...</td>
+                        <td>procps-ng</td>
+                        <td>/proc/stat</td>
+                        <td>pwquality</td>
+                    </tr><tr>
+                        <td>qemu</td>
+                        <td>realmd</td>
+                        <td>rm ...</td>
+                        <td>rpmostreed</td>
+                        <td>rpm</td>
+                    </tr><tr>
+                        <td>selinux-policy-targeted</td>
+                        <td>selinux-utils</td>
+                        <td>setenforce</td>
+                        <td>Setroubleshootd</td>
+                        <td>shadow-utils</td>
+                    </tr><tr>
+                        <td>shutdown</td>
+                        <td>sosreport</td>
+                        <td>ssh-agent</td>
+                        <td>sshd</td>
+                        <td>ssh-keygen</td>
+                    </tr><tr>
+                        <td>ssh</td>
+                        <td>sssd</td>
+                        <td>storaged</td>
+                        <td>subscription-manager</td>
+                        <td>sudo</td>
+                    </tr><tr>
+                        <td>/sys/fs/cgroup</td>
+                        <td>/sys/kernel</td>
+                        <td>/sys/power</td>
+                        <td>systemd</td>
+                        <td>timedated</td>
+                    </tr><tr>
+                        <td>Tuned</td>
+                        <td>udev</td>
+                        <td>UDisks2</td>
+                        <td>/usr/bin/kubectl</td>
+                        <td>/usr/bin/timedatectl</td>
+                    </tr><tr>
+                        <td>/usr/bin/virt-install</td>
+                        <td>/var/log/wtmp</td>
+                        <td>/var/run/utmp</td>
+                        <td>virsh</td>
+                        <td>who/w</td>
+                    </tr><tr>
+                        <td>xfsprogs</td>
+                        <td>yum</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-state="complex">
+            <!-- TODO: Add logos -->
+            <table class="reasons">
+                <thead>
+                    <th>15+ Linuxes and Products</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CentOS (7.x, Atomic)
+                    </tr><tr>
+                        <td>Fedora (25, 26, 27, Atomic)</td>
+                    </tr><tr>
+                        <td>Ubuntu (stable, 16.04)</td>
+                    </tr><tr>
+                        <td>RHEL (7.x, 7.4, Extras, Atomic)</td>
+                    </tr><tr>
+                        <td>Debian (stable, testing)</td>
+                    </tr><tr>
+                        <td>Openshift</td>
+                    </tr><tr>
+                        <td>RHEV Hypervisor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-state="complex">
+            <table class="reasons">
+                <thead>
+                    <th>5+ maintained branches</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>master</td>
+                    </tr><tr>
+                        <td>rhel-7.4</td>
+                    </tr><tr>
+                        <td>rhel-7.3.x</td>
+                    </tr><tr>
+                        <td>i386</td>
+                    </tr><tr>
+                        <td>s390x</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-state="complex">
+            <table class="reasons">
+                <thead>
+                    <th>3+ browsers</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Google Chrome</td>
+                    </tr><tr>
+                        <td>Internet Explorer</td>
+                    </tr><tr>
+                        <td>Firefox</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-state="complex" data-transition="slide-in fade-out">
+            <p class="comment">Weekly releases</p>
+        </section>
     </section>
 
-    <section data-state="complex">
-        <!-- TODO: Use code style here -->
-        <table class="reasons">
-            <thead>
-                <th colspan="5" class="comment">
-                    90+ APIs: File, Command, REST, DBus, Socket
-                </th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>abrt</td>
-                    <td>AppStream</td>
-                    <td>apt-get</td>
-                    <td>atomic</td>
-                    <td>Candlepin /candlepin/</td>
-                </tr><tr>
-                    <td>chpasswd</td>
-                    <td>CloudForms</td>
-                    <td>cryptsetup</td>
-                    <td>curl</td>
-                    <td>dbus-daemon</td>
-                </tr><tr>
-                    <td>device-mapper</td>
-                    <td>docker-storage-setup</td>
-                    <td>docker</td>
-                    <td>e2fsprogs</td>
-                    <td>etcd</td>
-                </tr><tr>
-                    <td>/etc/kdump.conf</td>
-                    <td>/etc/passwd</td>
-                    <td>firewalld</td>
-                    <td>FreeIPA</td>
-                    <td>GnuTLS</td>
-                </tr><tr>
-                    <td>GSSAPI</td>
-                    <td>hostnamed</td>
-                    <td>ipa-client</td>
-                    <td>ipa-client</td>
-                    <td>iproute</td>
-                </tr><tr>
-                    <td>iptables</td>
-                    <td>iscsi-tools</td>
-                    <td>journalctl</td>
-                    <td>kdump</td>
-                    <td>klist</td>
-                </tr><tr>
-                    <td>krb5</td>
-                    <td>Kubernetes /api/</td>
-                    <td>lastlog</td>
-                    <td>libvirt</td>
-                    <td>loginctl</td>
-                </tr><tr>
-                    <td>lvm</td>
-                    <td>mdadm</td>
-                    <td>NetworkManager</td>
-                    <td>NetworkManager-team</td>
-                    <td>oddjob</td>
-                </tr><tr>
-                    <td>Openshift /oapi/</td>
-                    <td>Openshift OAuth2</td>
-                    <td>openssl</td>
-                    <td>ostree</td>
-                    <td>oVirt /api/</td>
-                </tr><tr>
-                    <td>PackageKit</td>
-                    <td>passwd</td>
-                    <td>PCP</td>
-                    <td>PolicyKit</td>
-                    <td>/proc/meminfo... <!-- cpuinfo, diskstats --></td>
-                </tr><tr>
-                    <td>/proc/mounts</td>
-                    <td>/proc/net/dev...</td>
-                    <td>procps-ng</td>
-                    <td>/proc/stat</td>
-                    <td>pwquality</td>
-                </tr><tr>
-                    <td>qemu</td>
-                    <td>realmd</td>
-                    <td>rm ...</td>
-                    <td>rpmostreed</td>
-                    <td>rpm</td>
-                </tr><tr>
-                    <td>selinux-policy-targeted</td>
-                    <td>selinux-utils</td>
-                    <td>setenforce</td>
-                    <td>Setroubleshootd</td>
-                    <td>shadow-utils</td>
-                </tr><tr>
-                    <td>shutdown</td>
-                    <td>sosreport</td>
-                    <td>ssh-agent</td>
-                    <td>sshd</td>
-                    <td>ssh-keygen</td>
-                </tr><tr>
-                    <td>ssh</td>
-                    <td>sssd</td>
-                    <td>storaged</td>
-                    <td>subscription-manager</td>
-                    <td>sudo</td>
-                </tr><tr>
-                    <td>/sys/fs/cgroup</td>
-                    <td>/sys/kernel</td>
-                    <td>/sys/power</td>
-                    <td>systemd</td>
-                    <td>timedated</td>
-                </tr><tr>
-                    <td>Tuned</td>
-                    <td>udev</td>
-                    <td>UDisks2</td>
-                    <td>/usr/bin/kubectl</td>
-                    <td>/usr/bin/timedatectl</td>
-                </tr><tr>
-                    <td>/usr/bin/virt-install</td>
-                    <td>/var/log/wtmp</td>
-                    <td>/var/run/utmp</td>
-                    <td>virsh</td>
-                    <td>who/w</td>
-                </tr><tr>
-                    <td>xfsprogs</td>
-                    <td>yum</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section data-state="complex">
-        <!-- TODO: Add logos -->
-        <table class="reasons">
-            <thead>
-                <th>15+ Linuxes and Products</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>CentOS (7.x, Atomic)
-                </tr><tr>
-                    <td>Fedora (25, 26, 27, Atomic)</td>
-                </tr><tr>
-                    <td>Ubuntu (stable, 16.04)</td>
-                </tr><tr>
-                    <td>RHEL (7.x, 7.4, Extras, Atomic)</td>
-                </tr><tr>
-                    <td>Debian (stable, testing)</td>
-                </tr><tr>
-                    <td>Openshift</td>
-                </tr><tr>
-                    <td>RHEV Hypervisor</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section data-state="complex">
-        <!-- TODO: Layout -->
-        <table class="reasons">
-            <thead>
-                <th>5+ branches and architectures</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>master</td>
-                </tr><tr>
-                    <td>rhel-7.4</td>
-                </tr><tr>
-                    <td>rhel-7.3.x</td>
-                </tr><tr>
-                    <td>i386</td>
-                </tr><tr>
-                    <td>s390x</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section data-state="complex">
-        <!-- TODO: Layoeut -->
-        <table class="reasons">
-            <thead>
-                <th>3+ Browsers</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Google Chrome</td>
-                </tr><tr>
-                    <td>Internet Explorer</td>
-                </tr><tr>
-                    <td>Firefox</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section data-state="complex" data-transition="slide-in fade-out">
-        <!-- TODO: Layoeut -->
-        <p class="comment">Weekly releases</p>
-    </section>
-
-    <section data-background-image="explosion-422301_1920.jpg" data-transition="fade-in fade-out">
+    <section data-background-color="#000" data-transition="fade-in fade-out"
+	    data-background-image="images/explosion-422301_1920.jpg">
         <h1 class="stand">92 &#215; 15 &#215; 5 &#215; 3 &#215; 50</1>
         <aside class="notes">
         It interacts with XXX different APIs.
@@ -270,51 +293,217 @@
     </section>
 
     <section data-background="#000">
-        <img src="flickr-striatic-robots-1276095_b1bdc29d42_o.jpg">
+        <img src="images/flickr-striatic-robots-1276095_b1bdc29d42_o.jpg">
     </section>
 
     <section>
-        Boot the operating system thousands of times a day
+        Containerize your bots, yo
+        Scaling up and down
+        Communicating between bots
+        Rolling updates
     </section>
 
     <section>
-        Mounting /dev/kvm in a container
-    </section>
-
-    <section>
-        oci-kvm-hook
-    </section>
-
-    <section>
+        <!-- TODO: Show scaling up and down -->
         Scaling up and down
     </section>
 
+    
     <section>
+        <section>
+            <p class="reasons">
+                <i class="fa fa-archive"></i>
+                <span>Containerize your bots, yo!</span>
+            </p>
+        </section>
+
+	<section data-background="images/yo-dawg.png" data-background-position="bottom right"
+		data-background-size='10em'>
+            <!-- TODO: Lay this slide out -->
+            Testing <strong>containers</strong><br>
+            in <strong>Virtual Machines</strong><br>
+            in <strong>container</strong> bots<br>
+            running on <strong>virtual machines</strong><br>
+            <strong class="fragment">on turtles</strong><br>
+        </section>
+    </section>
+
+    <section>
+        <section>
+            Communicating between bots
+        </section>
+
+        <section>
+            <p>Headless Services</p>
+<pre><code>    {
+        "kind": "Service",
+        "metadata": {
+            "name": "cockpit-images"
+        },
+        "spec": {
+            <strong>"clusterIP": "None",</strong>
+            "selector": { "infra": "cockpit-tasks" }
+        }
+    }
+</code></pre>
+        </section>
+
+        <section>
+        <!-- TODO: Sharing state via host mounts -->
+<pre><code>
+$ host cockpit-images.verify.svc.cluster.local
+cockpit-images.verify.svc.cluster.local has address 10.128.1.158
+cockpit-images.verify.svc.cluster.local has address 10.128.1.159
+cockpit-images.verify.svc.cluster.local has address 10.128.1.160
+...
+$ dig +short cockpit-images.verify.svc.cluster.local | while read addr; do \
+curl -fsS http://$addr/rhel-7-ccd75fa36e17ffb1fa8d0da29fe2dc1afed28cd266253dc90a13745f1dedf081.qcow2 && break; done
+curl: (22) The requested URL returned error: 404 Not Found
+curl: (22) The requested URL returned error: 404 Not Found
+curl: (22) The requested URL returned error: 404 Not Found
+curl: (22) The requested URL returned error: 404 Not Found
+...</code></pre>
+        </section>
+
+    </section>
+
+    <section data-background-image="tire-marks.png" data-background-repeat="no-repeat" data-background-position="center">
+        <h1>Going off road</h1>
+    </section>
+
+    <section>
+        /dev/kvm in a Container
+        oci-kvm-hook
+        Sharing state via host mounts
+        High density via caching and host mounts
+    </section>
+
+    <section>
+        <!-- TODO: Need to fill this in -->
+        Boot the operating system thousands of times a day
+
+        VMs in CI are just a way to run a kernel
+
+        Fully under lifecycle and control of the container
+
+        <!-- TODO: Graph showing the spread here -->
+        <div class="graph" id="tests-duration"></div>
+        Boot to shutdown in less than 10 seconds
+    </section>
+
+    <section>
+        <section>
+            <!-- TODO: Fill this in -->
+            Mounting /dev/kvm in a container
+        </section>
+    </section>
+
+    <section>
+        <section>
+            <h2>oci-kvm-hook</h2>
+        </section>
+
+        <section style="text-align: left";>
+            <p><strong class="comment">add support for host devices #5607</strong><br>
+            <tt>github.com/kubernetes/kubernetes/issues/5607</tt></p>
+        </section>
+
+        <section>
+<pre><code>$ sudo yum install -y oci-kvm-hook
+$ kubectl run test --image=fedora --restart=OnFailure -- ls -l /dev/kvm
+$ kubectl logs test
+[root@cockpit-9 ~]# kubectl run -ti test --image=busybox --restart=Never -- ls -l /dev/kvm
+<strong>crw-rw-rw-    1 root     root       10, 232 Oct 18 10:41 /dev/kvm</strong>
+</code></pre>
+        </section>
+    </section>
+
+    <section>
+        <!-- TODO: Sharing state via host mounts -->
         Sharing state via host mounts
     </section>
 
     <section>
-        Communicating between bots
+    "spec": {
+        "containers": [
+            {
+                "name": "cockpit-tasks",
+                "image": "docker.io/cockpit/tests",
+                "securityContext": {
+                    "runAsUser": 1111,
+                },
+                "volumeMounts": [
+                    {
+                        "name": "secrets",
+                        "mountPath": "/secrets",
+                        "readOnly": true
+                    },
+                    {
+                        "name": "cache",
+                        "mountPath": "/cache",
+                        "readOnly": false
+                    },
+                    {
+                        "name": "tmp",
+                        "mountPath": "/tmp",
+                        "readonly": false
+                    }
+                ]
+            },
+        ],
+        "volumes": [
+            {
+                "name": "secrets",
+                "secret": {
+                    "secretName": "cockpit-tests-secrets"
+                }
+            },
+            {
+                "name": "cache",
+                "hostPath": {
+                    "path": "/var/cache/cockpit-tests"
+                }
+            },
+            {
+                "name": "tmp",
+                "emptyDir": { }
+            }
+        ],
     </section>
 
     <section>
-        <!-- Density of VMs on a given machine -->
+        <!-- TODO: Density of VMs on a given machine -->
         High density via caching and host mounts
+    </section>
+
+    <section data-state="divider">
+        The Dashboard
     </section>
 
     <section>
         The cockpit dashboard
     </section>
 
-    <section>
-        <h2><strong>Questions?
-        <p style="font-size: 0.75em"><span>Credits: </span></p>
+    <section data-state="title">
+        <h1 class="alt">Questions?</h1>
+            <br><br>
+            <h3 class="comment"><strong><tt>cockpit-project.org</tt></strong></h3>
+            <h3 class="comment"><strong><tt>#cockpit on FreeNode</tt></strong></h3>
+        <p><tt></tt></p>
+        <p class="credits">
+        <span class="comment">Credits:</span><br>
+        </span>
     </section>
 </div>
 </div>
 
+<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
 <script src="node_modules/reveal.js/js/reveal.js"></script>
+<script src="node_modules/d3/d3.js"></script>
 <script src="slides.js"></script>
+
+<script src="graphs.js"></script>
+<script src="september-tests-and-vms.jsonp"></script>
 
 </body>
 </html>
