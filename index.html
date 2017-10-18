@@ -297,18 +297,22 @@
     </section>
 
     <section>
-        Containerize your bots, yo
-        Scaling up and down
-        Communicating between bots
-        Rolling updates
+        <ul class="reasons fa-ul">
+            <li>
+                <i class="fa-li fa fa-archive"></i>
+                <span>Containerize your bots, yo</span>
+            </li>
+            <li>
+                <i class="fa-li fa fa-arrows-alt"></i>
+                <span>Scaling up and down</span>
+            </li>
+            <li>
+                <i class="fa-li fa fa-hand-spock-o"></i>
+                <span>Communicating between bots</span>
+            </li>
+        </ul>
     </section>
 
-    <section>
-        <!-- TODO: Show scaling up and down -->
-        Scaling up and down
-    </section>
-
-    
     <section>
         <section>
             <p class="reasons">
@@ -326,6 +330,17 @@
             running on <strong>virtual machines</strong><br>
             <strong class="fragment">on turtles</strong><br>
         </section>
+    </section>
+
+    <section>
+        <section>
+            <p class="reasons">
+                <i class="fa fa-arrows-alt"></i>
+                <span>Scaling up and down</span>
+            </p>
+        </section>
+
+        <!-- TODO: Show scaling up and down -->
     </section>
 
     <section>
@@ -367,15 +382,29 @@ curl: (22) The requested URL returned error: 404 Not Found
 
     </section>
 
-    <section data-background-image="tire-marks.png" data-background-repeat="no-repeat" data-background-position="center">
+    <section data-background-image="images/tire-marks.png" data-background-repeat="no-repeat" data-background-position="center">
         <h1>Going off road</h1>
     </section>
 
     <section>
-        /dev/kvm in a Container
-        oci-kvm-hook
-        Sharing state via host mounts
-        High density via caching and host mounts
+        <ul class="reasons fa-ul">
+            <li>
+                <i class="fa-li fa fa-exclamation"></i>
+                <span>/dev/kvm in a Container</span>
+            </li>
+            <li>
+                <i class="fa-li fa fa-exclamation"></i>
+                <span>OCI Hook: oci-kvm-hook</span>
+            </li>
+            <li>
+                <i class="fa-li fa fa-exclamation"></i>
+                <span>Sharing state via host mounts</span>
+            </li>
+            <li>
+                <i class="fa-li fa fa-exclamation"></i>
+                <span>High density via caching and host mounts</span>
+            </li>
+        </ul>
     </section>
 
     <section>
@@ -419,56 +448,51 @@ $ kubectl logs test
     </section>
 
     <section>
-        <!-- TODO: Sharing state via host mounts -->
-        Sharing state via host mounts
-    </section>
+        <section>
+            <!-- TODO: Sharing state via host mounts -->
+            Sharing state via host mounts
+        </section>
 
-    <section>
-    "spec": {
-        "containers": [
-            {
-                "name": "cockpit-tasks",
-                "image": "docker.io/cockpit/tests",
-                "securityContext": {
-                    "runAsUser": 1111,
-                },
-                "volumeMounts": [
-                    {
-                        "name": "secrets",
-                        "mountPath": "/secrets",
-                        "readOnly": true
+        <section>
+<pre><code> "containers": [{
+        "name": "cockpit-tasks",
+        "image": "docker.io/cockpit/tests",
+        "securityContext": { <strong>"runAsUser": 1111</strong> },
+        "volumeMounts": [{
+            "mountPath": "/secrets",
+            "readOnly": true
                     },
                     {
-                        "name": "cache",
                         "mountPath": "/cache",
                         "readOnly": false
                     },
                     {
-                        "name": "tmp",
                         "mountPath": "/tmp",
                         "readonly": false
                     }
                 ]
-            },
-        ],
-        "volumes": [
-            {
-                "name": "secrets",
-                "secret": {
-                    "secretName": "cockpit-tests-secrets"
-                }
-            },
-            {
-                "name": "cache",
-                "hostPath": {
-                    "path": "/var/cache/cockpit-tests"
-                }
-            },
-            {
-                "name": "tmp",
-                "emptyDir": { }
             }
-        ],
+        ]
+</code></pre>
+        </section>
+
+        <section>
+<pre><code>"volumes": [
+    {
+        "name": "secrets",
+        "secret": { "secretName": "cockpit-tests-secrets" }
+    },
+    {
+        "name": "cache",
+        <strong>"hostPath": { "path": "/var/cache/cockpit-tests" }</strong>
+    },
+    {
+        "name": "tmp",
+        "emptyDir": { }
+    }
+]</code></pre>
+        </section>
+
     </section>
 
     <section>
