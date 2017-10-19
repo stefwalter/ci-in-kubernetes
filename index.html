@@ -24,8 +24,8 @@
 <div class="slides">
 
     <section data-state="title">
-        <h2>Continuous Integration</h2>
-        <h2>of an Operating System</h2>
+        <h1 style="font-size: 2.2em">Continuous Integration</h1>
+        <h1 style="font-size: 2.2em">of an Operating System</h1>
         <h1 class="comment" style="font-size: 2.2em">in Kubernetes</h1>
         <br>
         <p><strong>Stef Walter</strong><br>
@@ -57,15 +57,15 @@
     </section>
 
     <section>
-        <div class="graph" id="september-tests-and-vms"></div>
+        <p>September 2017</p>
+        <div class="graph" id="september-tests-and-vms-2"></div>
+        <p>Tests: <strong>443,040</strong> &nbsp; &nbsp; &nbsp;
+            <span class="comment">VMs: <strong>558,413</strong></span></p>
     </section>
 
     <section data-state="clear" data-transition="fade-in fade-out">
 	<img src="images/logo.png" style="width: 800px">
         <p>a Linux session in a web browser</p>
-        <aside class="notes">
-        We've had a preview of that future in the Cockpit team
-        </aside>
     </section>
 
     <section data-state="clear" data-transition="fade-in fade-out"
@@ -79,10 +79,12 @@
     </section>
 
     <section>
-        <section data-state="clear" data-background-video="video/spawn-process.webm">
+        <section data-state="clear" data-background-size="contain"
+                 data-background-video="video/spawn-process.webm">
         </section>
 
-        <section data-state="clear" data-background-video="video/dbus-proxy.webm">
+        <section data-state="clear" data-background-size="contain"
+                 data-background-video="video/dbus-proxy.webm">
         </section>
     </section>
 
@@ -280,8 +282,7 @@
         </section>
     </section>
 
-    <section data-background-color="#000" data-transition="fade-in fade-out"
-	    data-background-image="images/explosion-422301_1920.jpg">
+    <section data-background-image="images/explosion-422301_1920.jpg" data-transition="fade-in fade-out">
         <h1 class="stand">92 &#215; 15 &#215; 5 &#215; 3 &#215; 50</1>
         <aside class="notes">
         It interacts with XXX different APIs.
@@ -321,14 +322,28 @@
             </p>
         </section>
 
+        <section>
+            <img src="images/01-initial.png">
+        </section>
+
+        <section>
+            <ul class="reasons">
+                <li>Self contained</li>
+                <li>Schlep around all the junk you need</li>
+                <li>Easy to update atomically</li>
+                <li>Rolling and asynchronous updates</li>
+                <li>Canary testing of bot environment</li>
+            </ul>
+        </section>
+
 	<section data-background="images/yo-dawg.png" data-background-position="bottom right"
 		data-background-size='10em'>
             <!-- TODO: Lay this slide out -->
-            Testing <strong>containers</strong><br>
-            in <strong>Virtual Machines</strong><br>
-            in <strong>container</strong> bots<br>
-            running on <strong>virtual machines</strong><br>
-            <strong class="fragment">on turtles</strong><br>
+            <p>Testing <strong>containers</strong></p>
+            <p>in <strong>Virtual Machines</strong></p>
+            <p>in <strong>container</strong> bots</p>
+            <p>running on <strong>virtual machines</strong></p>
+            <p class="fragment">on <strong>turtles!</strong></p>
         </section>
     </section>
 
@@ -340,12 +355,28 @@
             </p>
         </section>
 
-        <!-- TODO: Show scaling up and down -->
+        <section>
+<pre><code>$ kubectl <strong>scale --replicas=30</strong> cockpit-tasks</code></pre>
+        </section>
+
+        <section data-background-video="video/topology-scaling.webm" data-background-size="contain">
+        </section>
     </section>
 
     <section>
         <section>
-            Communicating between bots
+            <p class="reasons">
+                <i class="fa fa-hand-spock-o"></i>
+                <span>Sharing state between pods</span>
+            </p>
+        </section>
+
+        <section>
+            <img src="images/06-images.png">
+        </section>
+
+        <section>
+            <h1 class="alt">Bot gossip</h1>
         </section>
 
         <section>
@@ -364,9 +395,7 @@
         </section>
 
         <section>
-        <!-- TODO: Sharing state via host mounts -->
-<pre><code>
-$ host cockpit-images.verify.svc.cluster.local
+<pre><code>$ <strong>host cockpit-images.verify.svc.cluster.local</strong>
 cockpit-images.verify.svc.cluster.local has address 10.128.1.158
 cockpit-images.verify.svc.cluster.local has address 10.128.1.159
 cockpit-images.verify.svc.cluster.local has address 10.128.1.160
@@ -377,6 +406,7 @@ curl: (22) The requested URL returned error: 404 Not Found
 curl: (22) The requested URL returned error: 404 Not Found
 curl: (22) The requested URL returned error: 404 Not Found
 curl: (22) The requested URL returned error: 404 Not Found
+####################################                                      50,8%
 ...</code></pre>
         </section>
 
@@ -402,39 +432,67 @@ curl: (22) The requested URL returned error: 404 Not Found
             </li>
             <li>
                 <i class="fa-li fa fa-exclamation"></i>
-                <span>High density via caching and host mounts</span>
+                <span>High density via kernel caching</span>
             </li>
         </ul>
     </section>
 
     <section>
-        <!-- TODO: Need to fill this in -->
-        Boot the operating system thousands of times a day
-
-        VMs in CI are just a way to run a kernel
-
-        Fully under lifecycle and control of the container
-
-        <!-- TODO: Graph showing the spread here -->
-        <div class="graph" id="tests-duration"></div>
-        Boot to shutdown in less than 10 seconds
-    </section>
-
-    <section>
         <section>
-            <!-- TODO: Fill this in -->
-            Mounting /dev/kvm in a container
+            <p class="reasons">
+                <i class="fa fa-exclamation"></i>
+                <span><tt>/dev/kvm</tt> in a container</span>
+            </p>
         </section>
-    </section>
 
-    <section>
         <section>
-            <h2>oci-kvm-hook</h2>
+            <div class="graph" id="september-tests-and-vms-1"></div>
+            <p>Tests: <strong>443,040</strong> &nbsp; &nbsp; &nbsp;
+                <span class="comment">VMs: <strong>558,413</strong></span></p>
+        </section>
+
+        <section>
+            <div class="graph tests-duration"></div>
+        </section>
+
+        <section>
+            <p>VM lifecycle under control of a container</p>
+        </section>
+
+        <section>
+            <p><tt>/dev/kvm</tt> is already privilege separated</p>
+        </section>
+
+        <section>
+<code><pre>$ <strong>sudo docker run -ti busybox ls -l /dev/kvm</strong>
+ls: /dev/kvm: No such file or directory
+$ sudo docker run -ti <strong>--device=/dev/kvm</strong> busybox ls -l /dev/kvm
+crw-rw-rw-    1 root     36         10, 232 Oct 19 08:20 /dev/kvm</code></pre>
+        </section>
+
+        <section>
+<pre><code>$ kubectl run -ti test --image=busybox --restart=Never -- ls -l /dev/kvm
+ls: /dev/kvm: No such file or directory</code></pre>
         </section>
 
         <section style="text-align: left";>
             <p><strong class="comment">add support for host devices #5607</strong><br>
             <tt>github.com/kubernetes/kubernetes/issues/5607</tt></p>
+        </section>
+
+    </section>
+
+    <section>
+        <section>
+            <p class="reasons">
+                <i class="fa fa-exclamation"></i>
+                <span><tt>oci-kvm-hook</tt></span>
+            </p>
+        </section>
+
+        <section>
+            <img src="images/logo_oci.png">
+            <p class="comment">github.com/opencontainers/runtime-spec</p>
         </section>
 
         <section>
@@ -444,13 +502,16 @@ $ kubectl logs test
 [root@cockpit-9 ~]# kubectl run -ti test --image=busybox --restart=Never -- ls -l /dev/kvm
 <strong>crw-rw-rw-    1 root     root       10, 232 Oct 18 10:41 /dev/kvm</strong>
 </code></pre>
+            <p class="comment">github.com/stefwalter/oci-kvm-hook</p>
         </section>
     </section>
 
     <section>
         <section>
-            <!-- TODO: Sharing state via host mounts -->
-            Sharing state via host mounts
+            <p class="reasons">
+                <i class="fa fa-exclamation"></i>
+                <span>Sharing state via host mounts</span>
+            </p>
         </section>
 
         <section>
@@ -463,8 +524,8 @@ $ kubectl logs test
             "readOnly": true
                     },
                     {
-                        "mountPath": "/cache",
-                        "readOnly": false
+                        <strong>"mountPath": "/cache",
+                        "readOnly": false</strong>
                     },
                     {
                         "mountPath": "/tmp",
@@ -496,16 +557,29 @@ $ kubectl logs test
     </section>
 
     <section>
-        <!-- TODO: Density of VMs on a given machine -->
-        High density via caching and host mounts
+        <section>
+            <p class="reasons">
+                <i class="fa fa-exclamation"></i>
+                <span>High density via kernel caching</span>
+            </p>
+        </section>
+
+        <section>
+            <p>VMs: 50 - 70</p>
+            <p>Load: 50 to 60</p>
+            <p>IO: ~0 MB/s read 30-50 MB/s write</p>
+        </section>
+
+        <section data-background-video="video/cockpit-9-load.webm" data-background-size="contain">
+        </section>
+
     </section>
 
     <section data-state="divider">
-        The Dashboard
+        <h1 class="alt">The Dashboard</h1>
     </section>
 
-    <section>
-        The cockpit dashboard
+    <section data-background-video="video/kubernetes-dashboard.webm" data-background-size="contain">
     </section>
 
     <section data-state="title">
@@ -524,10 +598,12 @@ $ kubectl logs test
 <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
 <script src="node_modules/reveal.js/js/reveal.js"></script>
 <script src="node_modules/d3/d3.js"></script>
+<script src="node_modules/d3-legend/d3.legend.js"></script>
 <script src="slides.js"></script>
 
 <script src="graphs.js"></script>
 <script src="september-tests-and-vms.jsonp"></script>
+<script src="tests-duration.jsonp"></script>
 
 </body>
 </html>

@@ -13,7 +13,7 @@ def main():
     results = [ ]
     columns = None
 
-    reader = csv.reader(sys.stdin, delimiter='\t')
+    reader = csv.reader(sys.stdin, delimiter=' ', skipinitialspace=True)
     for row in reader:
         if not len(row):
             continue
@@ -22,7 +22,7 @@ def main():
         else:
             result = { }
             for i, item in enumerate(row):
-                result[columns[i]] = item
+                result[columns[i]] = item.strip()
             results.append(result)
 
     sys.stdout.write("{0}(".format(opts.identifier))
