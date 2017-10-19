@@ -2,6 +2,14 @@ var graph_width = 960;
 var graph_height = 540;
 
 function september_tests_and_vms(data) {
+
+    // Parse the date / time
+    var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+    data.forEach(function(d) {
+        d.date = parseDate(d.date);
+    });
+
     tests_and_vms(data, "#september-tests-and-vms-1");
     tests_and_vms(data, "#september-tests-and-vms-2");
 }
@@ -12,9 +20,6 @@ function tests_and_vms(data, id) {
     var margin = {top: 30, right: 20, bottom: 30, left: 80},
         width = graph_width - margin.left - margin.right,
         height = graph_height - margin.top - margin.bottom;
-
-    // Parse the date / time
-    var parseDate = d3.time.format("%Y-%m-%d").parse;
 
     // Set the ranges
     var x = d3.time.scale().range([0, width]);
@@ -49,10 +54,6 @@ function tests_and_vms(data, id) {
         .append("g")
             .attr("transform", 
                   "translate(" + margin.left + "," + margin.top + ")");
-
-    data.forEach(function(d) {
-        d.date = parseDate(d.date);
-    });
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
